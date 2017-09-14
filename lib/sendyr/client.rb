@@ -17,7 +17,7 @@ module Sendyr
 			opts = {boolean: true, list: @list_id}.merge(opts)
 			raise_if_missing_arg([:email, :list], opts)
 
-			path   = '/subscribe'
+			path   = 'subscribe'
 			result = post_to(path, opts)
 
 			if result.success? && %w(true 1).include?(clean_body(result))
@@ -120,7 +120,7 @@ module Sendyr
 		end
 
 		def url_for(path)
-			URI.join(@base_uri, path).to_s
+			File.join(@base_uri, path).to_s
 		end
 
 		def clean_body(result)
